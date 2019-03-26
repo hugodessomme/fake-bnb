@@ -78,6 +78,13 @@
         });
     }
 
+    function updateCounter() {
+        const count = +$('#ad_images .form-group').length;
+
+        $('#widgets-counter').val(count);
+    }
+
     handleDeleteButtons();
+    updateCounter();
 </script>
 {% endblock %}
