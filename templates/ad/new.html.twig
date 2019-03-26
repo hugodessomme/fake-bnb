@@ -11,6 +11,8 @@
     {{ form_start(form) }}
         {{ form_widget(form) }}
 
+        <input type="hidden" id="widgets-counter" value="0">
+
         <button type="submit" class="btn btn-primary">Créer une nouvelle annonce</button>
     {{ form_end(form) }}
 </div>
@@ -54,13 +56,15 @@
 <script>
     $('#add-image').click(function() {
         // Récupère le numéro des futurs champs à créer 
-        const index = $('#ad_images .form-group').length;
+        const index = +$('#widgets-counter').val();
 
         // Récupère le prototype des entrées
         const template = $('#ad_images').data('prototype').replace(/__name__/g, index);
         
         // Affichage du formulaire
         $('#ad_images').append(template);
+
+        $('#widgets-counter').val(index + 1);
 
         // Gère le bouton Supprimer
         handleDeleteButtons();
