@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Image;
 
 class AdController extends AbstractController
 {
@@ -36,6 +37,7 @@ class AdController extends AbstractController
     public function create(Request $request, EntityManagerInterface $manager)
     {
         $ad = new Ad();
+
         $form = $this->createForm(AdType::class, $ad);
 
         $form->handleRequest($request);
