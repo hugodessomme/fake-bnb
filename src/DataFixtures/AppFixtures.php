@@ -108,11 +108,13 @@ class AppFixtures extends Fixture
                 $createdAt = $faker->dateTimeBetween('-6 months');
                 $startDate = $faker->dateTimeBetween('-3 months');
                 
+                // Gestion de la date de fin
                 $duration = mt_rand(3, 10);
                 $endDate = (clone $startDate)->modify("+$duration days");
                 $amount = $ad->getPrice() * $duration;
 
                 $booker = $users[mt_rand(0, count($users) -1)];
+                $comment = $faker->paragraph();
 
                 $booking->setBooker($booker)
                         ->setAd($ad)
@@ -120,6 +122,7 @@ class AppFixtures extends Fixture
                         ->setEndDate($endDate)
                         ->setCreatedAt($createdAt)
                         ->setAmount($amount)
+                        ->setComment($comment)
                 ;
 
                 $manager->persist($booking);
