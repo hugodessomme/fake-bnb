@@ -117,6 +117,11 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getFullName()
+    {
+        return "{$this->firstName} {$this->lastName}";
+    }
+
     public function getEmail(): ?string
     {
         return $this->email;
